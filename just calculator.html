@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(135deg, #6dd5fa, #2980b9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #fff;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      width: 320px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.1rem;
+      font-weight: normal;
+      margin: 10px 0;
+      color: #f0f0f0;
+    }
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      text-align: center;
+      outline: none;
+    }
+
+    input[type="submit"] {
+      background: #ffffff;
+      color: #2980b9;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    input[type="submit"]:hover {
+      background: #d60e93;
+      color: #fff;
+    }
+
+    .results {
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 15px;
+    }
+
+    .results h1 {
+      margin: 8px 0;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">Simple Calculator</div>
+    <form>
+      <input type="number" id="first" placeholder="First number">
+      <input type="number" id="sec" placeholder="Second number">
+      <input type="submit" value="Calculate" onclick="return main()">
+    </form>
+
+    <div class="results">
+      <h1 id="add">The addition is: </h1>
+      <h1 id="sub">The subtraction is: </h1>
+      <h1 id="multi">The multiplication is: </h1>
+      <h1 id="divide">The division is: </h1>
+    </div>
+  </div>
+
+  <script>
+    function main() {
+      const a = Number(document.getElementById("first").value);
+      const b = Number(document.getElementById("sec").value);
+
+      add(a, b);
+      sub(a, b);
+      multi(a, b);
+      divide(a, b);
+      return false; // stop form from refreshing
+    }
+
+    function add(x, y) {
+      document.getElementById("add").innerHTML = "The addition is: " + (x + y);
+    }
+
+    function sub(x, y) {
+      document.getElementById("sub").innerHTML = "The subtraction is: " + (x - y);
+    }
+
+    function multi(x, y) {
+      document.getElementById("multi").innerHTML = "The multiplication is: " + (x * y);
+    }
+
+    function divide(x, y) {
+      document.getElementById("divide").innerHTML =
+        y !== 0 ? "The division is: " + (x / y) : "Cannot divide by zero";
+    }
+  </script>
+</body>
+</html>
